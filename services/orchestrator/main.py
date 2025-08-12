@@ -81,8 +81,11 @@ manager = ConnectionManager()
 async def startup_event():
     """Initialize services on startup"""
     try:
-        await deribit_client.connect()
-        pait_logger.emit("service_startup", {"status": "success", "service": "orchestrator"})
+        # Allow disabling external Deribit connection in dev via env
+        disable_deribit = os.getenv("DISABLE_DERIBIT", "0") in ("1", "true", "True")
+        if not disable_deribit:
+            await deribit_client.connect()
+        pait_logger.emit("service_startup", {"status": "success", "service": "orchestrator", "deribit_connected": not disable_deribit})
     except Exception as e:
         pait_logger.emit("service_startup", {"status": "error", "service": "orchestrator", "error": str(e)})
 
