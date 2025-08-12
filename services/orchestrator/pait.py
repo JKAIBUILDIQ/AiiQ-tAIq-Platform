@@ -16,6 +16,8 @@ class PaitLogger:
     def __init__(self):
         self.pait_log_url = os.getenv("PAIT_LOG_URL", "http://127.0.0.1:8000/api/claudia/pait/log")
         self.claudia_base_url = os.getenv("CLAUDIA_BASE_URL", "http://127.0.0.1:8000")
+        # allow disabling all outgoing PAIT/Claudia traffic
+        self.disabled = os.getenv("DISABLE_PAIT", "0").lower() in ("1", "true", "yes") or not self.pait_log_url
         self.session_id = self._generate_session_id()
         self.event_counter = 0
         
@@ -27,6 +29,8 @@ class PaitLogger:
     
     def emit(self, event_type: str, payload: Dict[str, Any], user_id: Optional[str] = None):
         """Emit pAIt telemetry event"""
+        if self.disabled:
+            return None
         try:
             event = {
                 "agent": "claudia",
@@ -56,6 +60,8 @@ class PaitLogger:
     
     async def forward_to_claudia(self, endpoint: str, data: Dict[str, Any]) -> bool:
         """Forward data to Claudia API"""
+        if self.disabled or not self.claudia_base_url:
+            return True
         try:
             url = f"{self.claudia_base_url}{endpoint}"
             
@@ -79,6 +85,8 @@ class PaitLogger:
     
     async def _send_to_pait(self, event: Dict[str, Any]):
         """Send event to pAIt logging endpoint"""
+        if self.disabled or not self.pait_log_url:
+            return
         try:
             async with httpx.AsyncClient(timeout=10.0) as client:
                 response = await client.post(
