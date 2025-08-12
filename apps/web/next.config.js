@@ -4,6 +4,11 @@ const nextConfig = {
     domains: ['localhost'],
   },
   webpack: (config) => {
+    // Silence optional Node-only deps pulled by walletconnect/pino in the browser
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      'pino-pretty': false,
+    }
     config.resolve.fallback = {
       ...config.resolve.fallback,
       fs: false,
