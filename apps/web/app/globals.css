@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-aiiq;
+  }
+}
+
+@layer components {
+  .aiiq-card {
+    @apply bg-aiiq-light border border-aiiq-lighter rounded-lg p-6 shadow-lg;
+  }
+  
+  .aiiq-button-primary {
+    @apply bg-aiiq-rose hover:bg-aiiq-rose/90 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-aiiq-rose/25;
+  }
+  
+  .aiiq-button-secondary {
+    @apply bg-aiiq-cyber hover:bg-aiiq-cyber/90 text-aiiq-dark font-semibold py-2 px-4 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-aiiq-cyber/25;
+  }
+  
+  .aiiq-button-success {
+    @apply bg-aiiq-success hover:bg-aiiq-success/90 text-aiiq-dark font-semibold py-2 px-4 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-aiiq-success/25;
+  }
+  
+  .aiiq-button-danger {
+    @apply bg-aiiq-danger hover:bg-aiiq-danger/90 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-aiiq-danger/25;
+  }
+  
+  .aiiq-input {
+    @apply bg-aiiq-light border border-aiiq-lighter rounded-lg px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-aiiq-cyber focus:border-transparent;
+  }
+  
+  .aiiq-select {
+    @apply bg-aiiq-light border border-aiiq-lighter rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-aiiq-cyber focus:border-transparent;
+  }
+  
+  .aiiq-table {
+    @apply w-full border-collapse;
+  }
+  
+  .aiiq-table th {
+    @apply bg-aiiq-lighter text-left p-3 text-aiiq-cyber font-semibold border-b border-aiiq-light;
+  }
+  
+  .aiiq-table td {
+    @apply p-3 border-b border-aiiq-light text-white;
+  }
+  
+  .aiiq-table tr:hover {
+    @apply bg-aiiq-lighter/50;
+  }
+  
+  .aiiq-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .aiiq-badge-bull {
+    @apply bg-aiiq-success/20 text-aiiq-success border border-aiiq-success/30;
+  }
+  
+  .aiiq-badge-bear {
+    @apply bg-aiiq-danger/20 text-aiiq-danger border border-aiiq-danger/30;
+  }
+  
+  .aiiq-badge-neutral {
+    @apply bg-aiiq-warning/20 text-aiiq-warning border border-aiiq-warning/30;
+  }
+  
+  .aiiq-gradient-text {
+    @apply bg-aiiq-gradient bg-clip-text text-transparent;
+  }
+  
+  .aiiq-cyber-border {
+    @apply border border-aiiq-cyber/30 hover:border-aiiq-cyber/60 transition-colors duration-200;
+  }
+  
+  .aiiq-glow {
+    @apply shadow-lg shadow-aiiq-cyber/25;
+  }
+  
+  .aiiq-pulse {
+    @apply animate-pulse-glow;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-aiiq-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-aiiq-cyber rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-aiiq-cyber/80;
+}
+
+/* TradingView-like chart styles */
+.tv-lightweight-charts {
+  @apply rounded-lg overflow-hidden;
+}
+
+/* Solana wallet adapter styles */
+.wallet-adapter-button {
+  @apply aiq-button-primary;
+}
+
+.wallet-adapter-button-trigger {
+  @apply aiq-button-primary;
+}
+
+/* Framer Motion custom animations */
+.motion-safe\:fade-in {
+  @apply animate-fade-in;
+}
+
+.motion-safe\:slide-in {
+  @apply animate-slide-in;
+}

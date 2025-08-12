@@ -1,0 +1,38 @@
+
+---
+
+## Tech Stack
+**Frontend**
+- Next.js 14 (App Router), TailwindCSS, shadcn/ui
+- `lightweight-charts` for financial charting
+- Zustand for state management
+
+**Backend**
+- Python (FastAPI, pandas, numpy)
+- Node.js (TypeScript) for certain adapters
+- PostgreSQL + TimescaleDB for historical storage
+- MongoDB for pAIt logs and agent memory
+- Redis for caching and pub/sub
+
+**AI / Models**
+- Ollama-served LLMs (local high-end quant/tuned models)
+- Quant libraries (TA-Lib, PyPortfolioOpt, custom math)
+- ML toolkits (scikit-learn, PyTorch, XGBoost)
+
+---
+
+## Quick Start
+```bash
+# Clone repo
+git clone https://github.com/JKAIBUILDIQ/AiiQ-tAIq.git
+cd AiiQ-tAIq
+
+# Install dependencies
+pnpm install       # frontend & TS packages
+pip install -r requirements.txt  # Python services
+
+# Launch dev environment
+docker-compose -f docker-compose.dev.yml up --build
+
+# Access web dashboard
+open http://localhost:3000

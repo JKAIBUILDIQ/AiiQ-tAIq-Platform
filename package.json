@@ -1,0 +1,32 @@
+{
+  "name": "aiiq-taiq",
+  "version": "0.1.0",
+  "description": "TradingView-style App for Options & Crypto (Solana + Deribit)",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "services/*"
+  ],
+  "scripts": {
+    "dev": "pnpm --parallel --filter \"./apps/*\" --filter \"./services/*\" dev",
+    "build": "pnpm --recursive build",
+    "test": "pnpm --recursive test",
+    "lint": "pnpm --recursive lint",
+    "format": "pnpm --recursive format",
+    "clean": "pnpm --recursive clean",
+    "docker:dev": "docker-compose -f infra/docker-compose.dev.yml up --build",
+    "docker:down": "docker-compose -f infra/docker-compose.dev.yml down",
+    "setup": "pnpm install && pnpm build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "prettier": "^3.0.0",
+    "eslint": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}

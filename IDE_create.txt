@@ -1,0 +1,325 @@
+Cursor Task: Build “AiiQ_tAIq Options Trader” — TradingView‑style App for Options & Crypto (Solana + Deribit)
+Mission
+
+Create a production‑grade MVP for AiiQ_tAIq, a TradingView‑like web app focused on options and crypto only with:
+
+    Real‑time charts (OHLCV), indicators, drawing tools
+
+    Options chain + Greeks + IV surface
+
+    Strategy builder (spreads/straddles/iron condors)
+
+    Portfolio + paper trading + risk limits
+
+    Solana wallet connect (Phantom/Solflare) + on‑chain options (Zeta/PsyOptions) read support
+
+    Deribit integration for crypto options data (and paper trading to start)
+
+    pAIt telemetry hooks for scoring & audit
+
+Non‑Negotiables
+
+    Typescript end‑to‑end
+
+    Next.js 14 (App Router) frontend; FastAPI (Python) for orchestration APIs; Node TS microservice for Solana on‑chain subscriptions
+
+    WebSocket streaming for ticks/greeks
+
+    Strict ESLint/Prettier; 80%+ unit coverage on calc/greeks modules
+
+    All secrets in .env.local (frontend) and .env (services)
+
+    pAIt logging to our existing Claudia API (Mongo) via HTTP
+
+Tech Stack
+
+Frontend
+
+    Next.js 14, React 18, TypeScript
+
+    Tailwind + shadcn/ui
+
+    lightweight-charts for price; custom SVG for IV/Greeks plots
+
+    Zustand for state
+
+    @solana/wallet-adapter-react + Phantom/Solflare
+
+Backend
+
+    services/orchestrator (Python FastAPI + Uvicorn): REST + WS gateway, Deribit adapter, options chain cache, risk/PnL/Greeks calc, paper trading engine, pAIt hooks.
+
+    services/solana-adapter (Node TS): Solana RPC subscriptions (Helius), Zeta/PsyOptions read‑only (markets, IV, OI), emits normalized events to orchestrator.
+
+Data Sources
+
+    Deribit (public WS + REST) for BTC/ETH options: chains, ticks, greeks, IV.
+
+    Solana: Zeta & PsyOptions (read first; write later). Use Helius RPC.
+
+Repo Layout
+
+AiiQ_tAIq
+  apps/
+    web/                      # Next.js 14 app
+  packages/
+    core-math/                # Greeks, IV, PnL, strategy pricing (ts)
+    ui/                       # shared UI comps
+  services/
+    orchestrator/             # FastAPI
+    solana-adapter/           # Node TS
+  infra/
+    docker/                   # dockerfiles
+    pm2/                      # pm2 ecosystem configs
+  .env.example
+  package.json
+  pnpm-workspace.yaml
+  README.md
+
+ENV Contracts
+
+# apps/web/.env.local
+NEXT_PUBLIC_API_BASE=http://127.0.0.1:8080
+NEXT_PUBLIC_WS_BASE=ws://127.0.0.1:8080/ws
+NEXT_PUBLIC_SOLANA_CLUSTER=mainnet-beta
+NEXT_PUBLIC_HELIUS_RPC=<your-helius-url>
+
+# services/orchestrator/.env
+DERIBIT_BASE_URL=wss://www.deribit.com/ws/api/v2
+PAIT_LOG_URL=http://127.0.0.1:8000/api/claudia/pait/log
+RISK_LIMIT_DEFAULT="Max 1% per trade; VaR<=5%"
+PORT=8080
+
+# services/solana-adapter/.env
+HELIUS_RPC=<your-helius-url>
+SOLANA_CLUSTER=mainnet-beta
+ZETA_PROGRAM_ID=<optional>
+PSY_PROGRAM_ID=<optional>
+ORCH_WS_SINK=ws://127.0.0.1:8080/ingest/solana
+
+Orchestrator (FastAPI) — Required Endpoints
+
+    GET /health → { ok: true, uptime_s }
+
+    GET /symbols → list supported underlyings (BTC, ETH, SOL)
+
+    GET /chart/:symbol?tf=1m|5m|1h|1d → OHLCV
+
+    GET /options/chain?underlying=BTC&exp=2025-09-26 → normalized chain (strike, type, bid/ask, iv, greeks)
+
+    WS /ws/stream?symbol=BTC → ticks, greeks, book
+
+    POST /paper/order → { side, instrument, qty, price?, type } → execute in paper engine
+
+    GET /paper/portfolio → positions, cash, Greeks aggregation, P&L
+
+    POST /risk/limit → sets user risk limit (also forward to Claudia /api/claudia/risk_limit)
+
+    POST /pait/log → internal debug; also forward to Claudia /api/claudia/ping if available
+
+    WS /ingest/solana ← consumed by solana-adapter to push on‑chain events (markets, IV, OI)
+
+Orchestrator: Minimal Data Normalization
+
+Create a models.py (pydantic) with:
+
+    Candle{t,o,h,l,c,v}
+
+    OptionQuote{symbol,expiry,strike,type,bid,ask,mid,iv,delta,gamma,theta,vega,rho,underlying,last}
+
+    Position{instrument, qty, avg_px, greeks, pnl}
+
+    RiskLimit{policy:str}
+
+Add a deribit_client.py (WS + REST) for:
+
+    subscribe ticks, book, greeks
+
+    fetch instruments + chain snapshot
+
+Add risk_engine.py (Python or reuse TS core-math via PyO3 later; for now Python):
+
+    Black‑Scholes + greeks
+
+    portfolio aggregation
+
+    P&L curve (spot range)
+
+Add pait.py:
+
+    emit(event_type, payload) → POST to PAIT_LOG_URL with {agent:'claudia', component, payload, ts}
+
+Solana Adapter (Node TS)
+
+    Subscribes via Helius WebSocket for relevant programs (Zeta, PsyOptions)
+
+    Normalizes program accounts → { underlying:'SOL', market, strike, expiry, iv, oi, mark }
+
+    Pushes to orchestrator WS /ingest/solana
+
+Skeleton:
+
+// services/solana-adapter/src/index.ts
+import 'dotenv/config'
+import { Connection } from '@solana/web3.js'
+import WebSocket from 'ws'
+
+const conn = new Connection(process.env.HELIUS_RPC!, 'confirmed')
+const sink = new WebSocket(process.env.ORCH_WS_SINK!)
+
+/* TODO:
+  - load zeta/psy clients
+  - subscribe to markets
+  - on updates -> sink.send(JSON.stringify({type:'solana_market', payload}))
+*/
+
+Frontend (Next.js)
+
+Pages / routes:
+
+    / Dashboard: watchlist, quick positions, risk banner
+
+    /chart/[symbol] TradingView‑like chart:
+
+        price panel (lightweight‑charts)
+
+        indicators: EMA, RSI
+
+        Options panel: chain table (filters by expiry), mini IV chart, buy/sell ticket (paper)
+
+    /portfolio positions, Greeks aggregation, P&L curve sliders
+
+    /builder strategy constructor (select legs, auto‑price greeks, payoff chart)
+
+Key Components:
+
+    ChartCanvas (price)
+
+    ChainTable (virtualized)
+
+    OrderTicket (paper)
+
+    GreeksBar (Δ Γ Θ V ρ)
+
+    PayoffChart (strategy payoff)
+
+    WalletConnect (Solana wallet adapter)
+
+State (Zustand slices):
+
+    useMarketStore (candles, ticks)
+
+    useOptionsStore (chain, filters)
+
+    usePortfolioStore (positions, riskLimit, paper orders)
+
+    usePaitStore (session log id, emit helper)
+
+pAIt Hooks
+
+    On every order/place/cancel/paper fill → pait.emit('order_event', {...})
+
+    On risk limit set/change → pait.emit('risk_limit', {...})
+
+    On strategy saved/backtest run → pait.emit('backtest', {...})
+
+    Include actor, latency_ms, result, error?, hash(facts)
+
+Initial Milestones (deliverables & acceptance)
+
+M1 (48h):
+
+    Bootable monorepo, CI (lint/test), Docker dev compose
+
+    Orchestrator: /health, /chart/BTC, /options/chain?underlying=BTC (Deribit snapshot)
+
+    Frontend: Chart + Chain table rendering BTC options, no trading yet
+
+    pAIt logging wired (dummy)
+
+M2 (72h):
+
+    WS streaming (ticks/greeks) from Deribit → live updates in UI
+
+    Paper trading engine (limit/market), portfolio view with Greeks aggregation
+
+    Risk limit set/get; enforcement: reject orders above risk policy
+
+M3 (1 week):
+
+    Solana wallet connect (Phantom/Solflare)
+
+    solana-adapter streaming Zeta/PsyOptions markets (read‑only)
+
+    IV surface mini chart; strategy builder with payoff chart
+
+M4 (stretch):
+
+    Backtester for options strategies (historical candles + synthetic IV)
+
+    Alerts (price/IV/Greeks thresholds)
+
+    Export trade journal CSV + pAIt score summary
+
+Commands (dev)
+
+# root
+pnpm i
+
+# web
+pnpm --filter @AiiQ_tAIq/web dev
+
+# orchestrator
+cd services/orchestrator
+python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+uvicorn main:app --reload --port 8080
+
+# solana-adapter
+cd services/solana-adapter
+pnpm i && pnpm dev
+
+Stubs to Generate (Cursor)
+
+    apps/web Next.js app with routes + components listed above.
+
+    packages/core-math TS module:
+
+        Black‑Scholes, greeks, IV (Newton), multi‑leg payoff, portfolio greeks aggregation.
+
+        Unit tests with Jest (80%+).
+
+    services/orchestrator FastAPI with endpoints & Deribit WS client; risk_engine.py; pait.py.
+
+    services/solana-adapter Node TS with Helius connection & stubbed Zeta/PsyOptions clients (read‑only).
+
+    Dockerfiles + docker-compose.dev.yml (web:3000, orchestrator:8080, solana-adapter:7070).
+
+    PM2 configs for orchestrator + solana-adapter (optional).
+
+UX Notes
+
+    Fast searchable chain, keyboard shortcuts (B/S, +/- qty)
+
+    P&L payoff updates live as legs edited
+
+    Risk banner always visible (policy + current usage)
+
+Security / Compliance
+
+    Never store wallet private keys
+
+    CORS locked to allowed origins (env)
+
+    All external calls pass through orchestrator (except wallet adapter)
+
+    Rate‑limit order endpoints; separate paper vs. real later
+
+Definition of Done (MVP)
+
+    BTC options from Deribit: chain + greeks + streaming in UI
+
+    Paper trading works, positions & P&L computed correctly vs ticks
+
+    Risk limit enforced; pAIt events emitted for key actions
+
+    Solana wallet connect + read‑only options markets visible

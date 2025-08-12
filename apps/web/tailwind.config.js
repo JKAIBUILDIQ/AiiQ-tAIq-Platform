@@ -1,0 +1,121 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: ["class"],
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+  ],
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    extend: {
+      colors: {
+        // AiiQ Brand Colors - inspired by aiiq.cloud and aiiq.dev
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        // AiiQ Trading Colors
+        'aiiq-rose': '#FF6B9D',
+        'aiiq-gold': '#FFD700',
+        'aiiq-cyber': '#00FFFF',
+        'aiiq-dark': '#0A0A0A',
+        'aiiq-darker': '#050505',
+        'aiiq-light': '#1A1A1A',
+        'aiiq-lighter': '#2A2A2A',
+        'aiiq-success': '#00FF88',
+        'aiiq-warning': '#FFAA00',
+        'aiiq-danger': '#FF4444',
+        'aiiq-info': '#00AAFF',
+        // Market Colors
+        'bull': '#00FF88',
+        'bear': '#FF4444',
+        'neutral': '#FFAA00',
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        'aiiq': ['Inter', 'system-ui', 'sans-serif'],
+        'aiiq-mono': ['JetBrains Mono', 'Fira Code', 'monospace'],
+        'aiiq-display': ['Orbitron', 'system-ui', 'sans-serif'],
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+        "fade-in": {
+          "0%": { opacity: 0, transform: "translateY(10px)" },
+          "100%": { opacity: 1, transform: "translateY(0)" },
+        },
+        "slide-in": {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        "pulse-glow": {
+          "0%, 100%": { boxShadow: "0 0 20px rgba(255, 107, 157, 0.3)" },
+          "50%": { boxShadow: "0 0 40px rgba(255, 107, 157, 0.6)" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.3s ease-out",
+        "slide-in": "slide-in 0.3s ease-out",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+      },
+      backgroundImage: {
+        'aiiq-gradient': 'linear-gradient(135deg, #FF6B9D 0%, #00FFFF 50%, #FFD700 100%)',
+        'aiiq-dark-gradient': 'linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #2A2A2A 100%)',
+        'cyber-grid': 'radial-gradient(circle at 1px 1px, #00FFFF 1px, transparent 0)',
+      },
+      backgroundSize: {
+        'cyber-grid': '20px 20px',
+      },
+    },
+  },
+  plugins: [require("tailwindcss-animate")],
+}

@@ -1,0 +1,30 @@
+aiiq_taiq/
+├── apps/
+│ ├── web/ # Next.js 14 frontend (dashboard, charts, trade control)
+│ └── cli/ # CLI tools for quick strategy runs, reporting
+│
+├── services/
+│ ├── orchestrator/ # FastAPI for routing, risk mgmt, execution
+│ ├── data-ingest/ # Market data streams (WebSocket, REST) + normalization
+│ ├── strategy-engine/ # Backtesting, paper/live trading logic
+│ ├── broker-adapters/ # Broker & exchange integrations (Deribit, Binance, IBKR, etc.)
+│ └── pait-logger/ # pAIt event logging, scoring, audit
+│
+├── packages/
+│ ├── core-math/ # Greeks, IV, portfolio metrics, risk models
+│ ├── strategy-templates/ # Ready-made quant/ML strategy blueprints
+│ └── ai-interface/ # Abstractions for Ollama, OpenAI, or custom models
+│
+├── infra/
+│ ├── docker/ # Dockerfiles for all services
+│ ├── pm2/ # PM2 ecosystem configs for production
+│ └── scripts/ # Deployment & maintenance scripts
+│
+├── tests/
+│ ├── unit/ # Unit tests
+│ └── integration/ # Multi-service integration tests
+│
+├── .env.example # Environment variable template
+├── docker-compose.dev.yml # Dev environment orchestration
+├── README.md
+└── LICENSE

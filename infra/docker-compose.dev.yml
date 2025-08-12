@@ -1,0 +1,92 @@
+version: '3.8'
+
+services:
+  # Next.js Web App
+  web:
+    build:
+      context: ../apps/web
+      dockerfile: ../infra/docker/Dockerfile.web
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../apps/web:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_BASE=http://localhost:8080
+      - NEXT_PUBLIC_WS_BASE=ws://localhost:8080/ws
+      - NEXT_PUBLIC_SOLANA_CLUSTER=mainnet-beta
+    depends_on:
+      - orchestrator
+    networks:
+      - aiq-network
+
+  # FastAPI Orchestrator
+  orchestrator:
+    build:
+      context: ../services/orchestrator
+      dockerfile: ../infra/docker/Dockerfile.orchestrator
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../services/orchestrator:/app
+    environment:
+      - PORT=8080
+      - DERIBIT_BASE_URL=wss://www.deribit.com/ws/api/v2
+      - PAIT_LOG_URL=http://localhost:8000/api/claudia/pait/log
+      - RISK_LIMIT_DEFAULT="Max 1% per trade; VaR<=5%"
+    networks:
+      - aiq-network
+
+  # Node.js Solana Adapter
+  solana-adapter:
+    build:
+      context: ../services/solana-adapter
+      dockerfile: ../infra/docker/Dockerfile.solana-adapter
+    ports:
+      - "7070:7070"
+    volumes:
+      - ../services/solana-adapter:/app
+      - /app/node_modules
+    environment:
+      - PORT=7070
+      - HELIUS_RPC=https://mainnet.helius-rpc.com/?api-key=your-api-key
+      - SOLANA_CLUSTER=mainnet-beta
+      - ORCH_WS_SINK=ws://orchestrator:8080/ingest/solana
+    depends_on:
+      - orchestrator
+    networks:
+      - aiq-network
+
+  # Redis for caching and message queuing
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - aiq-network
+
+  # PostgreSQL for persistent data (optional)
+  postgres:
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=aiiq_trading
+      - POSTGRES_USER=aiiq_user
+      - POSTGRES_PASSWORD=aiiq_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - aiq-network
+
+networks:
+  aiq-network:
+    driver: bridge
+
+volumes:
+  redis_data:
+  postgres_data:
