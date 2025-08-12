@@ -3,10 +3,22 @@
 
 Write-Host "🚀 Starting AiiQ_tAIq Development Environment..." -ForegroundColor Green
 
-# Check if pnpm is installed
-if (!(Get-Command pnpm -ErrorAction SilentlyContinue)) {
-    Write-Host "❌ pnpm is not installed. Please install it first:" -ForegroundColor Red
-    Write-Host "npm install -g pnpm" -ForegroundColor Yellow
+# Ensure portable Node (no admin required)
+$portableNode = Join-Path $PSScriptRoot 'nodejs-portable\node-v20.10.0-win-x64'
+if (Test-Path $portableNode) {
+    $env:PATH = "$portableNode;$env:PATH"
+    try { setx PATH "$portableNode;$([Environment]::GetEnvironmentVariable('Path','User'))" | Out-Null } catch {}
+    Write-Host "✅ Using portable Node at: $portableNode" -ForegroundColor Green
+}
+
+# Enable Corepack-managed pnpm to avoid global script PATH issues
+& node -v | Out-Null
+corepack enable | Out-Null
+corepack prepare pnpm@10.14.0 --activate | Out-Null
+
+# Verify pnpm via Corepack
+try { corepack pnpm --version | Out-Null } catch {
+    Write-Host "❌ pnpm (via Corepack) not available" -ForegroundColor Red
     exit 1
 }
 
@@ -28,7 +40,7 @@ try {
 
 # Install dependencies
 Write-Host "📦 Installing dependencies..." -ForegroundColor Blue
-pnpm install
+corepack pnpm install
 
 # Copy environment file if it doesn't exist
 if (!(Test-Path ".env")) {
@@ -45,5 +57,6 @@ Write-Host "Frontend: http://localhost:3000" -ForegroundColor Cyan
 Write-Host "Backend: http://localhost:8080" -ForegroundColor Cyan
 Write-Host "Solana Adapter: http://localhost:7070" -ForegroundColor Cyan
 
-# Start all services
-pnpm dev
+# Start all services (monorepo)
+Write-Host "🟢 Launching services..." -ForegroundColor Green
+corepack pnpm run dev
