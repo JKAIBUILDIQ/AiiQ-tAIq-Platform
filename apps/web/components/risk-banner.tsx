@@ -34,7 +34,7 @@ export function RiskBanner({
 
   return (
     <div className={cn(
-      'border rounded-lg p-4 transition-all duration-200',
+      'border rounded-2xl p-5 bg-aiiq-dark/60 backdrop-blur-md transition-all duration-200',
       getRiskColor()
     )}>
       <div className="flex items-center justify-between">

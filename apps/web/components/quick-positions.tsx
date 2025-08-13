@@ -68,7 +68,7 @@ export function QuickPositions() {
   const totalPnlPercent = mockPositions.reduce((sum, pos) => sum + pos.pnlPercent, 0) / mockPositions.length
 
   return (
-    <div className="aiq-card">
+    <div className="aiq-card rounded-2xl border-aiiq-light/30 bg-aiiq-dark/60 backdrop-blur-md">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold text-white">Quick Positions</h2>
         <button className="aiq-button-primary text-sm px-3 py-1">

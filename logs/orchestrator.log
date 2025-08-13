@@ -1,0 +1,12 @@
+INFO:     Will watch for changes in these directories: ['D:\\Gringots001\\AiiQ_vault001\\AiiQ-tAIq\\services\\orchestrator']
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+INFO:     Started reloader process [39048] using WatchFiles
+INFO:     Started server process [30048]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     ('127.0.0.1', 63376) - "WebSocket /ingest/solana" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     ('127.0.0.1', 63421) - "WebSocket /ingest/solana" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:63507 - "GET /docs HTTP/1.1" 200 OK

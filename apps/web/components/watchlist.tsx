@@ -24,7 +24,7 @@ const mockWatchlist: WatchlistItem[] = [
 
 export function Watchlist() {
   return (
-    <div className="aiq-card">
+    <div className="aiq-card rounded-2xl border-aiiq-light/30 bg-aiiq-dark/60 backdrop-blur-md">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold text-white">Watchlist</h2>
         <button className="aiq-button-secondary text-sm px-3 py-1">

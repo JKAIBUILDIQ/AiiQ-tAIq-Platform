@@ -1,10 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   :root {
@@ -58,7 +58,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-aiiq;
+    @apply bg-aiiq-darker text-foreground font-aiiq;
   }
 }
 
@@ -163,14 +163,74 @@
   @apply rounded-lg overflow-hidden;
 }
 
-/* Solana wallet adapter styles */
-.wallet-adapter-button {
-  @apply aiq-button-primary;
+/* Edge-style horizontal dock for bottom widgets */
+.aiiq-dock {
+  @apply fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex gap-4 rounded-2xl bg-aiiq-dark/60 backdrop-blur-xl border border-aiiq-light/30 px-4 py-3 shadow-2xl;
 }
 
-.wallet-adapter-button-trigger {
-  @apply aiq-button-primary;
+.aiiq-tile {
+  @apply rounded-2xl border border-aiiq-light/30 bg-aiiq-dark/60 backdrop-blur-md shadow-lg transition-transform duration-150 hover:scale-[1.03];
 }
+
+/* Magical Edge-like visuals */
+.aiiq-glow-tile {
+  border-radius: 9999px;
+  height: 3.5rem; /* h-14 */
+  width: 3.5rem;  /* w-14 */
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #FF6B9D 0%, #00FFFF 55%, #FFD700 100%);
+  box-shadow: 0 0 18px rgba(0,255,255,0.20), 0 0 28px rgba(255,107,157,0.22), 0 0 18px rgba(255,215,0,0.18);
+  transition: transform 150ms ease, box-shadow 200ms ease, filter 200ms ease;
+}
+.aiiq-glow-tile:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 32px rgba(0,255,255,0.40), 0 0 42px rgba(255,107,157,0.32), 0 0 28px rgba(255,215,0,0.28);
+  filter: saturate(115%);
+}
+
+/* Subtle starfield overlay for hero */
+.aiiq-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.08;
+  animation: starScroll 60s linear infinite;
+}
+@keyframes starScroll {
+  from { background-position: 0 0; }
+  to { background-position: 0 2000px; }
+}
+
+/* Aura pulse for neon elements */
+@keyframes auraPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0,255,255,0.25), 0 0 30px rgba(255,107,157,0.22), 0 0 20px rgba(255,215,0,0.18); }
+  50% { box-shadow: 0 0 30px rgba(0,255,255,0.38), 0 0 44px rgba(255,107,157,0.35), 0 0 30px rgba(255,215,0,0.30); }
+}
+.aiiq-aura {
+  animation: auraPulse 2.8s ease-in-out infinite;
+}
+
+/* Aura utility for neon cards */
+.aura-tile {
+  box-shadow: 0 0 18px rgba(0,255,255,0.20), 0 0 28px rgba(255,107,157,0.22), 0 0 18px rgba(255,215,0,0.18);
+}
+
+/* Shimmer for number changes */
+@keyframes numberShimmer {
+  0% { text-shadow: 0 0 0 rgba(255,215,0,0); filter: brightness(1); }
+  25% { text-shadow: 0 0 14px rgba(255,215,0,0.7); filter: brightness(1.15); }
+  100% { text-shadow: 0 0 0 rgba(255,215,0,0); filter: brightness(1); }
+}
+.aiiq-number-changed {
+  animation: numberShimmer 700ms ease-out 1;
+}
+
+/* Solana wallet adapter styles */
+  .wallet-adapter-button { @apply aiiq-button-primary; }
+  .wallet-adapter-button-trigger { @apply aiiq-button-primary; }
 
 /* Framer Motion custom animations */
 .motion-safe\:fade-in {

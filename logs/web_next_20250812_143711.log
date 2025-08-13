@@ -1,0 +1,43 @@
+   Γû▓ Next.js 14.0.0
+   - Local:        http://localhost:3001
+   - Network:      http://0.0.0.0:3001
+
+npm ERR! code ENOWORKSPACES
+npm ERR! This command does not support workspaces.
+
+npm ERR! A complete log of this run can be found in: C:\Users\MainUser\AppData\Local\npm-cache\_logs\2025-08-12T19_37_12_857Z-debug-0.log
+ Γ£ô Ready in 1978ms
+ Γùï Compiling /page ...
+ Γ£ô Compiled /page in 14.3s (7828 modules)
+ Γùï Compiling /not-found ...
+ Γ£ô Compiled /not-found in 972ms (7806 modules)
+ Γ£ô Compiled in 907ms (7815 modules)
+ Γ£ô Compiled in 855ms (7782 modules)
+ Γ£ô Compiled in 467ms (7782 modules)
+ Γ£ô Compiled in 723ms (4046 modules)
+ Γùï Compiling /not-found ...
+ Γ£ô Compiled /not-found in 517ms (7787 modules)
+ Γ£ô Compiled in 534ms (7801 modules)
+ Γ£ô Compiled in 1870ms (7803 modules)
+ ΓÜá Fast Refresh had to perform a full reload due to a runtime error.
+ Γ£ô Compiled /not-found in 395ms (7808 modules)
+ Γ£ô Compiled in 282ms (4060 modules)
+ Γ£ô Compiled in 856ms (7803 modules)
+ Γ£ô Compiled /not-found in 394ms (7808 modules)
+ Γ£ô Compiled in 794ms (7803 modules)
+ Γ£ô Compiled in 828ms (7803 modules)
+ Γ£ô Compiled in 785ms (7803 modules)
+ Γùï Compiling /ferrari/page ...
+ Γ£ô Compiled /ferrari/page in 1054ms (7832 modules)
+ Γùï Compiling /not-found ...
+ Γ£ô Compiled /not-found in 1099ms (7837 modules)
+ Γ£ô Compiled in 1399ms (7846 modules)
+ Γ£ô Compiled in 790ms (7846 modules)
+ Γ£ô Compiled /not-found in 406ms (7837 modules)
+ Γ£ô Compiled in 1837ms (7827 modules)
+ Γ£ô Compiled in 394ms (7170 modules)
+ Γ£ô Compiled in 658ms (7212 modules)
+ Γùï Compiling /not-found ...
+ Γ£ô Compiled /not-found in 1209ms (7217 modules)
+ Γ£ô Compiled in 409ms (7217 modules)
+[?25h

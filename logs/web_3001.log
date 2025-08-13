@@ -1,0 +1,16 @@
+   Γû▓ Next.js 14.0.0
+   - Local:        http://localhost:3001
+   - Network:      http://0.0.0.0:3001
+
+npm ERR! code ENOWORKSPACES
+npm ERR! This command does not support workspaces.
+
+npm ERR! A complete log of this run can be found in: C:\Users\MainUser\AppData\Local\npm-cache\_logs\2025-08-12T19_34_43_017Z-debug-0.log
+[Error: EPERM: operation not permitted, open 'D:\Gringots001\AiiQ_vault001\AiiQ-tAIq\apps\web\.next\trace'] {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'open',
+  path: 'D:\\Gringots001\\AiiQ_vault001\\AiiQ-tAIq\\apps\\web\\.next\\trace'
+}
+ Γ£ô Ready in 2.1s
+[?25h

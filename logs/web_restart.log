@@ -1,0 +1,83 @@
+   Γû▓ Next.js 14.0.0
+   - Local:        http://localhost:3001
+   - Network:      http://0.0.0.0:3001
+
+npm ERR! code ENOWORKSPACES
+npm ERR! This command does not support workspaces.
+
+npm ERR! A complete log of this run can be found in: C:\Users\MainUser\AppData\Local\npm-cache\_logs\2025-08-12T20_16_24_206Z-debug-0.log
+ Γ£ô Ready in 2.1s
+ Γùï Compiling /ferrari/page ...
+ Γ¿» ./app/globals.css.webpack[javascript/auto]!=!../../node_modules/.pnpm/next@14.0.0_@babel+core@7.2_065af4a661717f6c8dfddb8c743c0c62/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!../../node_modules/.pnpm/next@14.0.0_@babel+core@7.2_065af4a661717f6c8dfddb8c743c0c62/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./app/globals.css
+Error: Cannot find module 'tailwindcss-animate'
+Require stack:
+- D:\Gringots001\AiiQ_vault001\AiiQ-tAIq\apps\web\tailwind.config.js
+Import trace for requested module:
+./app/globals.css.webpack[javascript/auto]!=!../../node_modules/.pnpm/next@14.0.0_@babel+core@7.2_065af4a661717f6c8dfddb8c743c0c62/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!../../node_modules/.pnpm/next@14.0.0_@babel+core@7.2_065af4a661717f6c8dfddb8c743c0c62/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./app/globals.css
+./app/globals.css
+ Γ¿» ./app/globals.css.webpack[javascript/auto]!=!../../node_modules/.pnpm/next@14.0.0_@babel+core@7.2_065af4a661717f6c8dfddb8c743c0c62/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!../../node_modules/.pnpm/next@14.0.0_@babel+core@7.2_065af4a661717f6c8dfddb8c743c0c62/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./app/globals.css
+Error: Cannot find module 'tailwindcss-animate'
+Require stack:
+- D:\Gringots001\AiiQ_vault001\AiiQ-tAIq\apps\web\tailwind.config.js
+Import trace for requested module:
+./app/globals.css.webpack[javascript/auto]!=!../../node_modules/.pnpm/next@14.0.0_@babel+core@7.2_065af4a661717f6c8dfddb8c743c0c62/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!../../node_modules/.pnpm/next@14.0.0_@babel+core@7.2_065af4a661717f6c8dfddb8c743c0c62/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./app/globals.css
+./app/globals.css
+ Γ¿» ./app/globals.css.webpack[javascript/auto]!=!../../node_modules/.pnpm/next@14.0.0_@babel+core@7.2_065af4a661717f6c8dfddb8c743c0c62/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!../../node_modules/.pnpm/next@14.0.0_@babel+core@7.2_065af4a661717f6c8dfddb8c743c0c62/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./app/globals.css
+Error: Cannot find module 'tailwindcss-animate'
+Require stack:
+- D:\Gringots001\AiiQ_vault001\AiiQ-tAIq\apps\web\tailwind.config.js
+Import trace for requested module:
+./app/globals.css.webpack[javascript/auto]!=!../../node_modules/.pnpm/next@14.0.0_@babel+core@7.2_065af4a661717f6c8dfddb8c743c0c62/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!../../node_modules/.pnpm/next@14.0.0_@babel+core@7.2_065af4a661717f6c8dfddb8c743c0c62/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./app/globals.css
+./app/globals.css
+ Γ¿» ./app/globals.css.webpack[javascript/auto]!=!../../node_modules/.pnpm/next@14.0.0_@babel+core@7.2_065af4a661717f6c8dfddb8c743c0c62/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!../../node_modules/.pnpm/next@14.0.0_@babel+core@7.2_065af4a661717f6c8dfddb8c743c0c62/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./app/globals.css
+Error: Cannot find module 'tailwindcss-animate'
+Require stack:
+- D:\Gringots001\AiiQ_vault001\AiiQ-tAIq\apps\web\tailwind.config.js
+Import trace for requested module:
+./app/globals.css.webpack[javascript/auto]!=!../../node_modules/.pnpm/next@14.0.0_@babel+core@7.2_065af4a661717f6c8dfddb8c743c0c62/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!../../node_modules/.pnpm/next@14.0.0_@babel+core@7.2_065af4a661717f6c8dfddb8c743c0c62/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./app/globals.css
+./app/globals.css
+ Γ£ô Compiled /not-found in 1059ms (3646 modules)
+ Γ£ô Compiled in 293ms (3589 modules)
+ Γùï Compiling /page ...
+ Γ£ô Compiled /page in 847ms (7323 modules)
+ Γ£ô Compiled (7373 modules)
+ ΓÜá Fast Refresh had to perform a full reload due to a runtime error.
+ Γ£ô Compiled in 579ms (3589 modules)
+ Γ£ô Compiled in 275ms (3589 modules)
+ Γ£ô Compiled in 1493ms (7384 modules)
+ Γ£ô Compiled in 907ms (7384 modules)
+ Γ£ô Compiled in 552ms (7384 modules)
+ Γ£ô Compiled in 608ms (7384 modules)
+ Γùï Compiling /not-found ...
+ Γ£ô Compiled /not-found in 663ms (7375 modules)
+ Γ£ô Compiled in 556ms (3590 modules)
+ Γ£ô Compiled in 264ms (3590 modules)
+ Γ£ô Compiled in 277ms (3590 modules)
+ Γ£ô Compiled in 1662ms (7388 modules)
+ Γ£ô Compiled in 571ms (7388 modules)
+ Γ£ô Compiled in 859ms (7390 modules)
+ Γ£ô Compiled in 593ms (7390 modules)
+ Γ£ô Compiled in 252ms (3593 modules)
+ Γ£ô Compiled in 1282ms (7410 modules)
+ ΓÜá Fast Refresh had to perform a full reload due to a runtime error.
+ Γùï Compiling /not-found ...
+ Γ£ô Compiled /not-found in 594ms (7401 modules)
+ Γ£ô Compiled in 680ms (7415 modules)
+ ΓÜá Fast Refresh had to perform a full reload due to a runtime error.
+ ΓÜá Fast Refresh had to perform a full reload due to a runtime error.
+ Γ£ô Compiled in 1517ms (7396 modules)
+ Γ£ô Compiled /not-found in 479ms (7401 modules)
+ Γ£ô Compiled in 374ms (3605 modules)
+ ΓÜá Fast Refresh had to perform a full reload due to a runtime error.
+ Γ£ô Compiled in 826ms (7401 modules)
+ Γ£ô Compiled in 563ms (7415 modules)
+ ΓÜá Fast Refresh had to perform a full reload due to a runtime error.
+ ΓÜá Fast Refresh had to perform a full reload due to a runtime error.
+ Γ£ô Compiled in 847ms (7417 modules)
+ Γ£ô Compiled in 522ms (7417 modules)
+ ΓÜá Fast Refresh had to perform a full reload due to a runtime error.
+ ΓÜá Fast Refresh had to perform a full reload due to a runtime error.
+ ΓÜá Fast Refresh had to perform a full reload due to a runtime error.
+ Γ£ô Compiled in 1357ms (7406 modules)
+ Γ£ô Compiled /not-found in 390ms (7397 modules)
+ Γ£ô Compiled in 676ms (7411 modules)

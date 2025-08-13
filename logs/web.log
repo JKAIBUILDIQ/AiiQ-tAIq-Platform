@@ -1,0 +1,18 @@
+   Γû▓ Next.js 14.0.0
+   - Local:        http://localhost:3000
+
+npm ERR! code ENOWORKSPACES
+npm ERR! This command does not support workspaces.
+
+npm ERR! A complete log of this run can be found in: C:\Users\MainUser\AppData\Local\npm-cache\_logs\2025-08-12T19_14_45_067Z-debug-0.log
+ Γ£ô Ready in 2.3s
+ Γùï Compiling /page ...
+ Γ£ô Compiled /page in 3.7s (7805 modules)
+ Γùï Compiling /not-found ...
+ Γ£ô Compiled /not-found in 1227ms (7810 modules)
+ Γ£ô Compiled in 832ms (7805 modules)
+ Γ£ô Compiled in 511ms (7805 modules)
+ Γ£ô Compiled /not-found in 440ms (7810 modules)
+ Γ£ô Compiled in 610ms (7801 modules)
+ Γ£ô Compiled in 205ms (4056 modules)
+[?25h

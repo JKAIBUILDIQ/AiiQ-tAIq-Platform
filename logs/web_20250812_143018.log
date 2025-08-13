@@ -1,0 +1,10 @@
+   Γû▓ Next.js 14.0.0
+   - Local:        http://localhost:3000
+   - Network:      http://0.0.0.0:3000
+
+npm ERR! code ENOWORKSPACES
+npm ERR! This command does not support workspaces.
+
+npm ERR! A complete log of this run can be found in: C:\Users\MainUser\AppData\Local\npm-cache\_logs\2025-08-12T19_30_20_551Z-debug-0.log
+ Γ£ô Ready in 2.1s
+[?25h

@@ -5,9 +5,9 @@ import Link from 'next/link'
 
 export function Footer() {
   return (
-    <footer className="bg-aiiq-darker border-t border-aiiq-light mt-auto">
+    <footer className="bg-transparent mt-auto">
       <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 rounded-2xl border border-aiiq-light/30 bg-aiiq-dark/60 backdrop-blur-md p-6">
           {/* Brand Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">

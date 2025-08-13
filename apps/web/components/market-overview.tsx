@@ -1,6 +1,8 @@
+
 'use client'
 
 import { TrendingUp, TrendingDown, Minus } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { getChangeColor, getChangeIcon, formatCurrency, formatPercentage } from '@/lib/utils'
 
 interface MarketData {
@@ -20,19 +22,28 @@ const mockMarketData: MarketData[] = [
 ]
 
 export function MarketOverview() {
+  // Avoid hydration mismatch by rendering time only after mount
+  const [timeText, setTimeText] = useState<string>('')
+  useEffect(() => {
+    const update = () => setTimeText(new Date().toLocaleTimeString())
+    update()
+    const id = setInterval(update, 1000)
+    return () => clearInterval(id)
+  }, [])
+
   return (
-    <div className="aiq-card">
+    <div className="aiq-card rounded-2xl border-aiiq-light/30 bg-aiiq-dark/60 backdrop-blur-md overflow-hidden">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold text-white">Market Overview</h2>
         <div className="flex items-center space-x-2 text-sm text-gray-400">
           <span>Last updated:</span>
-          <span className="text-aiiq-cyber">{new Date().toLocaleTimeString()}</span>
+          <span className="text-aiiq-cyber">{timeText || '—'}</span>
         </div>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
         {mockMarketData.map((market) => (
-          <div key={market.symbol} className="bg-aiiq-lighter rounded-lg p-4 border border-aiiq-light hover:border-aiiq-cyber transition-colors duration-200">
+          <div key={market.symbol} className="bg-aiiq-lighter/60 rounded-lg p-4 border border-aiiq-light/40 hover:border-aiiq-cyber transition">
             <div className="flex items-center justify-between mb-2">
               <h3 className="font-bold text-white">{market.symbol}</h3>
               <div className={getChangeColor(market.changePercent)}>

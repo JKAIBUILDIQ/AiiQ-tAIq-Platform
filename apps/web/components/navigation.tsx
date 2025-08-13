@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { WalletConnect } from './wallet-connect'
+import { SearchBar } from './search-bar'
 import { cn } from '@/lib/utils'
 import { 
   BarChart3, 
@@ -20,15 +21,16 @@ const navigation = [
   { name: 'Strategy Builder', href: '/builder', icon: Zap },
   { name: 'Risk Management', href: '/risk', icon: Shield },
   { name: 'Settings', href: '/settings', icon: Settings },
+  { name: 'Strategies', href: '/#strategies', icon: TrendingUp },
 ]
 
 export function Navigation() {
   const pathname = usePathname()
 
   return (
-    <nav className="bg-aiiq-darker border-b border-aiiq-light sticky top-0 z-50">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+    <nav className="sticky top-0 z-50 mx-4 mt-4 rounded-2xl border border-aiiq-light/40 bg-aiiq-dark/40 backdrop-blur-xl shadow-lg">
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between h-14">
           {/* Logo and Brand */}
           <div className="flex items-center space-x-4">
             <Link href="/" className="flex items-center space-x-2">
@@ -41,6 +43,11 @@ export function Navigation() {
                 AiiQ_tAIq
               </span>
             </Link>
+          </div>
+
+          {/* Search centered like Edge */}
+          <div className="flex-1 px-6 hidden md:block">
+            <SearchBar />
           </div>
 
           {/* Navigation Links */}
@@ -73,7 +80,7 @@ export function Navigation() {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="md:hidden border-t border-aiiq-light">
+      <div className="md:hidden border-t border-aiiq-light/40">
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navigation.map((item) => {
             const isActive = pathname === item.href
