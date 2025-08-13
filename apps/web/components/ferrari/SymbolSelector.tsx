@@ -11,7 +11,7 @@ const DEFAULTS = [
 
 export default function SymbolSelector() {
   const symbol = useUIStore((s) => s.selectedSymbol)
-  const setSymbol = useUIStore((s) => s.setSymbol)
+  const setSymbol = useUIStore((s) => (s as any).setSymbol ?? (s as any).setSelectedSymbol)
 
   return (
     <div className="flex flex-wrap gap-2">
@@ -25,5 +25,6 @@ export default function SymbolSelector() {
     </div>
   )
 }
+
 
 

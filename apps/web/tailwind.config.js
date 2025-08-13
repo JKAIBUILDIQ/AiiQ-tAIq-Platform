@@ -76,7 +76,7 @@ module.exports = {
       fontFamily: {
         'aiiq': ['Inter', 'system-ui', 'sans-serif'],
         'aiiq-mono': ['JetBrains Mono', 'Fira Code', 'monospace'],
-        'aiiq-display': ['Orbitron', 'system-ui', 'sans-serif'],
+        'aiiq-display': ['"Bree Serif"', 'serif'],
       },
       keyframes: {
         "accordion-down": {

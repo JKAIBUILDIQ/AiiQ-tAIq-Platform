@@ -33,3 +33,5 @@ export default function EquityPanel({ equity, stats }: { equity: EquityPoint[]; 
 }
 
 
+
+

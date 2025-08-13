@@ -3,7 +3,6 @@
 import React, { useState, useRef, useEffect, ReactNode } from 'react'
 import { motion, AnimatePresence, HTMLMotionProps } from 'framer-motion'
 import Link from 'next/link'
-import SideRail from './SideRail'
 import {
   Gauge,
   DollarSign,
@@ -37,9 +36,12 @@ import {
   X,
 } from 'lucide-react'
 import { WidgetsShelf } from '@/components/widgets/shelf'
-import { MarketOverview } from '@/components/market-overview'
+import MarketsOverview from '@/components/markets/MarketsOverview'
+import TradingViewScreener from '@/components/tradingview/TradingViewScreener'
+import TradingViewSymbolOverview from '@/components/tradingview/TradingViewSymbolOverview'
 import Constellation from './Constellation'
 import TilesRow from './TilesRow'
+import TopSymbolLinks from './TopSymbolLinks'
 import dynamic from 'next/dynamic'
 const OptionsChain = dynamic(() => import('@/components/widgets/options-chain.client'), { ssr: false })
 import StrategyPlayground from '@/components/tradingview/StrategyPlayground'
@@ -122,11 +124,9 @@ export default function FerrariDashboard() {
   const sortedStats = [...assistantData]
   const selectedSymbol = useUIStore((s)=>s.selectedSymbol)
   return (
-    <div className="flex min-h-[90vh] bg-[#0a0b0f] rounded-2xl border border-aiiq-light/30 overflow-hidden">
-      <SideRail />
-
+    <div className="bg-[#0a0b0f] rounded-2xl border border-aiiq-light/30 overflow-hidden">
       {/* Main area over background visual */}
-      <div className="relative flex-1">
+      <div className="relative">
         <div className="absolute inset-0" style={{ backgroundImage: 'url(/images/ferrari_cruise.svg)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
         <Constellation />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-black/0" />
@@ -135,9 +135,8 @@ export default function FerrariDashboard() {
           <div className="bg-black/50 border border-aiiq-light/30 rounded-xl p-6 backdrop-blur-md aura-tile">
             <h1 className="text-2xl font-aiiq-display">JBot Ferrari <span className="text-aiiq-rose">Dashboard</span></h1>
             <p className="text-gray-400 text-sm mt-1">Professional virtual suite with performance widgets.</p>
-            <div className="mt-4 flex items-center justify-between gap-4 flex-wrap">
-              <TilesRow />
-              <SymbolSelector />
+            <div className="mt-4 space-y-3">
+              <TopSymbolLinks />
             </div>
           </div>
 
@@ -146,8 +145,20 @@ export default function FerrariDashboard() {
             <WidgetsShelf />
           </div>
 
-          <div id="overview" className="bg-black/50 border border-aiiq-light/30 rounded-xl p-6 backdrop-blur-md aura-tile">
-            <MarketOverview />
+          <div id="overview" className="bg-black/30 border border-aiiq-light/30 rounded-xl p-0 backdrop-blur-md aura-tile">
+            <MarketsOverview />
+          </div>
+
+          {/* TradingView Screener widgets */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="aiiq-tile p-4">
+              <h2 className="text-lg font-semibold text-white mb-2">Crypto Screener</h2>
+              <TradingViewScreener screenerType="crypto_mkt" theme="dark" height={520} defaultScreen="most_traded" />
+            </div>
+            <div className="aiiq-tile p-4">
+              <h2 className="text-lg font-semibold text-white mb-2">Stocks Overview</h2>
+              <TradingViewSymbolOverview symbol={selectedSymbol} symbols={[ 'AAPL', 'GOOGL', 'MSFT' ]} theme="dark" height={520} />
+            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-6">

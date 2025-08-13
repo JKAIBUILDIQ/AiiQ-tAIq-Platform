@@ -35,7 +35,7 @@ export function Navigation() {
           <div className="flex items-center space-x-4">
             <Link href="/" className="flex items-center space-x-2">
               <img 
-                src="/Logo_rose.svg" 
+                src="/images/IconOnly_transp.png" 
                 alt="AiiQ Logo" 
                 className="h-8 w-8"
               />

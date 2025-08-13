@@ -49,7 +49,7 @@ export function DashboardHero({ children }: DashboardHeroProps) {
           >
             <div className="flex justify-center">
               <img 
-                src="/Logo_rose.svg" 
+                src="/images/IconOnly_transp.png" 
                 alt="AiiQ Logo" 
                 className="h-20 w-20 aiiq-pulse"
               />
