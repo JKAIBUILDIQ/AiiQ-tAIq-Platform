@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Github, BarChart3, LineChart, Wallet, Newspaper, LayoutDashboard } from 'lucide-react'
+import { Github, BarChart3, LineChart, Wallet, Newspaper, LayoutDashboard, Cpu } from 'lucide-react'
 
 type QuickLink = {
   label: string
@@ -14,6 +14,7 @@ const links: QuickLink[] = [
   { label: 'Charts', href: '/chart/BTC', icon: (p) => <LineChart {...p} /> },
   { label: 'Portfolio', href: '/portfolio', icon: (p) => <BarChart3 {...p} /> },
   { label: 'Strategy', href: '/builder', icon: (p) => <BarChart3 {...p} /> },
+  { label: 'GPU Data', href: '/gpu-data', icon: (p) => <Cpu {...p} /> },
   { label: 'Risk', href: '/risk', icon: (p) => <LineChart {...p} /> },
   { label: 'News', href: '#', icon: (p) => <Newspaper {...p} /> },
   { label: 'GitHub', href: 'https://github.com', icon: (p) => <Github {...p} /> },
