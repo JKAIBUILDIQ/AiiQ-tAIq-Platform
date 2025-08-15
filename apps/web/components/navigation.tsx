@@ -18,7 +18,7 @@ const navigation = [
   { name: 'Dashboard', href: '/', icon: BarChart3 },
   { name: 'Charts', href: '/chart/BTC', icon: TrendingUp },
   { name: 'Portfolio', href: '/portfolio', icon: PieChart },
-  { name: 'Strategy Builder', href: '/builder', icon: Zap },
+  { name: 'Strategy Builder', href: '/assistants/strategy-builder', icon: Zap },
   { name: 'Risk Management', href: '/risk', icon: Shield },
   { name: 'Settings', href: '/settings', icon: Settings },
   { name: 'Strategies', href: '/#strategies', icon: TrendingUp },

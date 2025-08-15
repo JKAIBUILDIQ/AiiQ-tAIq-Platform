@@ -1,0 +1,12 @@
+{
+  "strategies": [
+    {
+      "name": "Strategy",
+      "legs": [
+        "{'model': 'claudia-trader:latest', 'created_at': '2025-08-13T15:47:53.4973014Z', 'response': '{\\n\"Strategies\": [\\n{\\n\"na"
+      ],
+      "expected_return": "",
+      "risk_summary": ""
+    }
+  ]
+}

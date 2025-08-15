@@ -2,6 +2,13 @@
  * PM2 ecosystem for AiiQ_tAIq
  * Place this at: ./ecosystem.config.js
  */
+const fs = require('fs')
+const path = require('path')
+const isWin = process.platform === 'win32'
+const venvPythonCandidate = isWin ? '.\\.venv\\Scripts\\python.exe' : './.venv/bin/python'
+const systemPython = isWin ? 'python' : 'python3'
+const venvPython = fs.existsSync(path.resolve(venvPythonCandidate)) ? venvPythonCandidate : systemPython
+
 module.exports = {
   apps: [
     // ───────────────────────────────
@@ -10,18 +17,11 @@ module.exports = {
     {
       name: 'aiiq-web',
       cwd: 'apps/web',
-      script: 'bash',
-      args: '-lc "pnpm run start"',             // production: next build && next start
+      script: 'node',
+      args: 'node_modules/next/dist/bin/next start -p 3000',
       env: {
         NODE_ENV: 'production',
         PORT: '3000',
-        // PUBLIC ENDPOINTS
-        NEXT_PUBLIC_ORCHESTRATOR_URL: 'http://127.0.0.1:8001',
-      },
-      env_development: {
-        NODE_ENV: 'development',
-        // run `pnpm dev` in dev
-        args: '-lc "pnpm run dev"',
       },
       watch: false,
       max_memory_restart: '512M',
@@ -35,16 +35,47 @@ module.exports = {
     {
       name: 'orchestrator-api',
       cwd: 'services/orchestrator',
-      script: 'bash',
-      // Uses repo-level .venv if present; otherwise system python
-      args: "-lc '[[ -d \"../../.venv\" ]] && source ../../.venv/bin/activate; uvicorn main:app --host 0.0.0.0 --port 8080'",
+      script: venvPython,
+      args: '-m uvicorn main:app --host 0.0.0.0 --port 8080 --reload',
       env: {
-        NODE_ENV: 'production',
+        NODE_ENV: 'development',
         PORT: '8080',
       },
-      env_development: {
+      watch: false,
+      max_memory_restart: '512M',
+      autorestart: true,
+      time: true,
+    },
+
+    // ───────────────────────────────
+    // 3) Solana Adapter (Node/TS)
+    // ───────────────────────────────
+    {
+      name: 'solana-adapter',
+      cwd: 'services/solana-adapter',
+      script: 'pnpm',
+      args: 'run dev',
+      env: {
         NODE_ENV: 'development',
-        args: '-lc "pnpm run dev"',
+        PORT: '7070',
+      },
+      watch: false,
+      max_memory_restart: '512M',
+      autorestart: true,
+      time: true,
+    },
+
+    // ───────────────────────────────
+    // 4) Ollama Strategy Engine (FastAPI)
+    // ───────────────────────────────
+    {
+      name: 'strategy-engine',
+      cwd: 'services/ollama-strategy-engine',
+      script: venvPython,
+      args: '-m uvicorn main:app --host 0.0.0.0 --port 8787 --reload',
+      env: {
+        NODE_ENV: 'development',
+        PORT: '8787',
       },
       watch: false,
       max_memory_restart: '512M',

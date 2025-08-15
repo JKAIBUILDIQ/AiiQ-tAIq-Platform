@@ -6,8 +6,9 @@ from typing import List, Dict, Any, Optional
 from datetime import datetime, timedelta
 import os
 from dotenv import load_dotenv
+import ssl
 
-from models import Candle, OptionQuote, MarketData
+from .models import Candle, OptionQuote, MarketData
 
 load_dotenv()
 
@@ -20,11 +21,20 @@ class DeribitClient:
         self.ws_connection = None
         self.subscriptions = {}
         self.client_id = 0
+        # SSL verification toggle for environments with custom/intercepting certs
+        verify_env = os.getenv("DERIBIT_VERIFY_SSL", "1").lower()
+        self.verify_ssl = verify_env not in ("0", "false", "no")
         
     async def connect(self):
         """Connect to Deribit WebSocket"""
         try:
-            self.ws_connection = await websockets.connect(self.ws_url)
+            if self.verify_ssl:
+                self.ws_connection = await websockets.connect(self.ws_url)
+            else:
+                ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+                ctx.check_hostname = False
+                ctx.verify_mode = ssl.CERT_NONE
+                self.ws_connection = await websockets.connect(self.ws_url, ssl=ctx)
             await self._authenticate()
             print("Connected to Deribit WebSocket")
         except Exception as e:
@@ -63,25 +73,75 @@ class DeribitClient:
         response = await self.ws_connection.recv()
         return json.loads(response)
     
-    async def get_instruments(self) -> List[str]:
-        """Get list of available instruments"""
+    async def test_connection(self) -> bool:
+        """Test if Deribit API is accessible"""
+        try:
+            # Try to get server time as a simple connectivity test
+            response = await self._send_request("public/test")
+            return "result" in response
+        except Exception as e:
+            print(f"Deribit connection test failed: {e}")
+            return False
+
+    async def get_instruments(self, currency: str = "BTC") -> List[Dict[str, Any]]:
+        """Get list of available instruments for a currency"""
         try:
             response = await self._send_request("public/get_instruments", {
-                "currency": "BTC"
+                "currency": currency.upper(),
+                "expired": False,
+                "kind": "option"
             })
             
             if "result" in response:
                 instruments = response["result"]
-                # Extract instrument names
-                symbols = [inst["instrument_name"] for inst in instruments]
-                return symbols[:20]  # Return first 20 for demo
+                # Return full instrument objects instead of just names
+                return instruments[:100]  # Return first 100 for demo
             else:
-                return ["BTC-PERPETUAL", "BTC-26JAN24-45000-C", "BTC-26JAN24-45000-P"]
+                # Return mock data if API fails
+                return [
+                    {
+                        "instrument_name": f"{currency}-26JAN24-45000-C",
+                        "underlying_index": currency,
+                        "strike": 45000,
+                        "option_type": "call",
+                        "expiration_timestamp": 1706313600000,
+                        "volume_24h": 150,
+                        "open_interest": 1250
+                    },
+                    {
+                        "instrument_name": f"{currency}-26JAN24-45000-P",
+                        "underlying_index": currency,
+                        "strike": 45000,
+                        "option_type": "put",
+                        "expiration_timestamp": 1706313600000,
+                        "volume_24h": 200,
+                        "open_interest": 1800
+                    }
+                ]
                 
         except Exception as e:
-            print(f"Error getting instruments: {e}")
+            print(f"Error getting {currency} instruments: {e}")
             # Return mock data
-            return ["BTC-PERPETUAL", "BTC-26JAN24-45000-C", "BTC-26JAN24-45000-P"]
+            return [
+                {
+                    "instrument_name": f"{currency}-26JAN24-45000-C",
+                    "underlying_index": currency,
+                    "strike": 45000,
+                    "option_type": "call",
+                    "expiration_timestamp": 1706313600000,
+                    "volume_24h": 150,
+                    "open_interest": 1250
+                },
+                {
+                    "instrument_name": f"{currency}-26JAN24-45000-P",
+                    "underlying_index": currency,
+                    "strike": 45000,
+                    "option_type": "put",
+                    "expiration_timestamp": 1706313600000,
+                    "volume_24h": 200,
+                    "open_interest": 1800
+                }
+            ]
     
     async def get_candles(self, symbol: str, timeframe: str = "1h", count: int = 100) -> List[Candle]:
         """Get OHLCV candles for a symbol"""

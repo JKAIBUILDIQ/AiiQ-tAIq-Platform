@@ -1,5 +1,7 @@
 'use client'
 
+import React from 'react'
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
@@ -33,6 +35,7 @@ const items: NavItem[] = [
   { label: 'Widgets', href: '/widgets', icon: LineChart },
   { label: 'Wallet', href: '/wallet', icon: Wallet },
   { label: 'Assistants', href: '/assistants', icon: Bot },
+  { label: 'Strategy Builder', href: '/assistants/strategy-builder', icon: Bot },
   { label: 'Reports', href: '/reports', icon: FileText },
   { label: 'Docs', href: '/docs', icon: BookOpen },
   { label: 'Risk', href: '/risk', icon: Shield },
@@ -66,11 +69,79 @@ export function SideNav() {
             )
           })}
         </nav>
+        <ServiceStatusFooter />
       </div>
     </aside>
   )
 }
 
 export default SideNav
+
+function StatusDot({ ok }: { ok: boolean | null }) {
+  const color = ok === null ? 'bg-gray-500' : ok ? 'bg-green-500' : 'bg-red-500'
+  return <span className={`inline-block h-2.5 w-2.5 rounded-full ${color}`} />
+}
+
+function useServiceHealth(url: string) {
+  const [ok, setOk] = React.useState<boolean | null>(null)
+  React.useEffect(() => {
+    let mounted = true
+    async function ping() {
+      try {
+        const res = await fetch(url, { cache: 'no-store', mode: 'cors' })
+        if (!mounted) return
+        setOk(res.ok)
+      } catch {
+        if (mounted) setOk(false)
+      }
+    }
+    ping()
+    const id = setInterval(ping, 5000)
+    return () => { mounted = false; clearInterval(id) }
+  }, [url])
+  return ok
+}
+
+function ServiceStatusFooter() {
+  const orchOk = useServiceHealth('http://localhost:8080/health')
+  const stratOk = useServiceHealth('http://localhost:8787/health')
+  const webOk = true
+  return (
+    <div className="border-t border-aiiq-light/30 px-3 py-2 text-[11px] text-gray-400">
+      <div className="flex items-center justify-between mb-1">
+        <span>Web</span>
+        <StatusDot ok={webOk} />
+      </div>
+      <div className="flex items-center justify-between mb-1">
+        <span>Orchestrator</span>
+        <StatusDot ok={orchOk} />
+      </div>
+      <div className="flex items-center justify-between">
+        <span className="flex items-center gap-1">
+          Strategy Engine
+          <CopyCmdTooltip cmd={`..\\..\\.venv\\Scripts\\python.exe -m uvicorn --app-dir D:\\Gringots001\\AiiQ_vault001\\AiiQ-tAIq\\services\\ollama-strategy-engine main:app --host 0.0.0.0 --port 8787 --reload`} />
+        </span>
+        <StatusDot ok={stratOk} />
+      </div>
+    </div>
+  )
+}
+
+function CopyCmdTooltip({ cmd }: { cmd: string }) {
+  const [copied, setCopied] = React.useState(false)
+  const title = `Restart (PowerShell):\n${cmd}`
+  return (
+    <button
+      type="button"
+      title={title}
+      onClick={async () => {
+        try { await navigator.clipboard.writeText(cmd); setCopied(true); setTimeout(() => setCopied(false), 1500) } catch {}
+      }}
+      className="text-xs px-1 py-0.5 border border-aiiq-light/40 rounded hover:bg-aiiq-light/30 text-gray-300 hover:text-white"
+    >
+      {copied ? 'Copied' : 'cmd'}
+    </button>
+  )
+}
 
 

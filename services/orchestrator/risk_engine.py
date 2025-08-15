@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 import math
 import random
 
-from models import Position, RiskLimit, PaperOrder, PaperOrderResult, PortfolioSummary, Greeks
+from .models import Position, RiskLimit, PaperOrder, PaperOrderResult, PortfolioSummary, Greeks
 
 class RiskEngine:
     """Risk management and paper trading engine"""
