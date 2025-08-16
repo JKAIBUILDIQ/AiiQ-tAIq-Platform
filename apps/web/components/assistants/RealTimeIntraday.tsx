@@ -297,3 +297,4 @@ export default function RealTimeIntraday({ symbol = 'SPY', defaultInterval = '5m
   );
 }
 
+

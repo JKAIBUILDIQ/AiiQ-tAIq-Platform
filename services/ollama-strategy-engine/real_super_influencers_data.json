@@ -1,0 +1,423 @@
+{
+  "super_influencers": [
+    {
+      "portfolioHoldings": [
+        {
+          "symbol": "PLTR",
+          "weight": 8.5,
+          "value": "2.1B",
+          "change": "+2.3%"
+        },
+        {
+          "symbol": "TSLA",
+          "weight": 7.2,
+          "value": "1.8B",
+          "change": "+1.8%"
+        },
+        {
+          "symbol": "COIN",
+          "weight": 4.1,
+          "value": "980M",
+          "change": "-0.5%"
+        },
+        {
+          "symbol": "SQ",
+          "weight": 3.8,
+          "value": "920M",
+          "change": "+1.2%"
+        }
+      ],
+      "recentMoves": [
+        {
+          "action": "Increased PLTR position",
+          "date": "2025-01-15",
+          "impact": "positive"
+        },
+        {
+          "action": "Reduced TSLA exposure",
+          "date": "2025-01-12",
+          "impact": "neutral"
+        },
+        {
+          "action": "Added AI infrastructure stocks",
+          "date": "2025-01-10",
+          "impact": "positive"
+        }
+      ],
+      "publicStatements": [
+        {
+          "statement": "AI will be the biggest investment theme of the decade",
+          "date": "2025-01-14",
+          "sentiment": "bullish"
+        },
+        {
+          "statement": "Bitcoin reaching $1M by 2030",
+          "date": "2025-01-13",
+          "sentiment": "very_bullish"
+        },
+        {
+          "statement": "Disruptive innovation at discount prices",
+          "date": "2025-01-11",
+          "sentiment": "bullish"
+        }
+      ],
+      "cnbcAppearances": [
+        {
+          "show": "Squawk Box",
+          "date": "2025-01-15",
+          "key_points": [
+            "AI revolution",
+            "Bitcoin adoption",
+            "Innovation stocks"
+          ]
+        },
+        {
+          "show": "Mad Money",
+          "date": "2025-01-12",
+          "key_points": [
+            "Market opportunities",
+            "Tech valuations",
+            "Crypto outlook"
+          ]
+        }
+      ],
+      "raw_score": 160,
+      "max_raw_score": 1000,
+      "completeness_percentage": 30.8,
+      "normalized_rating": 45.4,
+      "max_normalized_rating": 500,
+      "rating_grade": "D (Insufficient Data)",
+      "breakdown": {
+        "performance": 0,
+        "social_acceleration": 17.0,
+        "strategy_quality": 0,
+        "proof_of_work": 3.5
+      },
+      "acceleration_factors": [
+        "CNBC appearances: 2 (2x multiplier)",
+        "Public statements: 3 (1.5x multiplier)"
+      ],
+      "recommendations": [
+        "Improve data completeness (currently 30.8%)",
+        "Collect missing performance metrics and strategy details",
+        "Focus on improving core performance metrics",
+        "Increase media exposure and public commentary",
+        "Build longer track record with proven results"
+      ],
+      "data_quality_assessment": "Poor - Insufficient data for reliable scoring",
+      "calculated_at": "2025-08-15T09:29:32.088420"
+    },
+    {
+      "portfolioHoldings": [
+        {
+          "symbol": "AAPL",
+          "weight": 42.8,
+          "value": "156.8B",
+          "change": "+1.1%"
+        },
+        {
+          "symbol": "BAC",
+          "weight": 8.9,
+          "value": "32.5B",
+          "change": "+0.8%"
+        },
+        {
+          "symbol": "KO",
+          "weight": 6.7,
+          "value": "24.6B",
+          "change": "+0.3%"
+        },
+        {
+          "symbol": "AXP",
+          "weight": 4.2,
+          "value": "15.4B",
+          "change": "+1.5%"
+        }
+      ],
+      "recentMoves": [
+        {
+          "action": "Increased AAPL position",
+          "date": "2025-01-15",
+          "impact": "positive"
+        },
+        {
+          "action": "Added Japanese trading houses",
+          "date": "2025-01-10",
+          "impact": "positive"
+        },
+        {
+          "action": "Reduced bank exposure",
+          "date": "2025-01-08",
+          "impact": "neutral"
+        }
+      ],
+      "publicStatements": [
+        {
+          "statement": "American business remains strong",
+          "date": "2025-01-14",
+          "sentiment": "bullish"
+        },
+        {
+          "statement": "Index funds for most investors",
+          "date": "2025-01-12",
+          "sentiment": "conservative"
+        },
+        {
+          "statement": "Buy when others are fearful",
+          "date": "2025-01-10",
+          "sentiment": "contrarian"
+        }
+      ],
+      "cnbcAppearances": [
+        {
+          "show": "Squawk Box",
+          "date": "2025-01-15",
+          "key_points": [
+            "Market outlook",
+            "Value opportunities",
+            "Economic strength"
+          ]
+        },
+        {
+          "show": "Closing Bell",
+          "date": "2025-01-12",
+          "key_points": [
+            "Investment philosophy",
+            "Market timing",
+            "Risk management"
+          ]
+        }
+      ],
+      "raw_score": 160,
+      "max_raw_score": 1000,
+      "completeness_percentage": 30.8,
+      "normalized_rating": 45.4,
+      "max_normalized_rating": 500,
+      "rating_grade": "D (Insufficient Data)",
+      "breakdown": {
+        "performance": 0,
+        "social_acceleration": 17.0,
+        "strategy_quality": 0,
+        "proof_of_work": 3.5
+      },
+      "acceleration_factors": [
+        "CNBC appearances: 2 (2x multiplier)",
+        "Public statements: 3 (1.5x multiplier)"
+      ],
+      "recommendations": [
+        "Improve data completeness (currently 30.8%)",
+        "Collect missing performance metrics and strategy details",
+        "Focus on improving core performance metrics",
+        "Increase media exposure and public commentary",
+        "Build longer track record with proven results"
+      ],
+      "data_quality_assessment": "Poor - Insufficient data for reliable scoring",
+      "calculated_at": "2025-08-15T09:29:32.088483"
+    }
+  ],
+  "options_strategies": {
+    "strategies": [
+      {
+        "name": "Iron Condor",
+        "description": "Selling out-of-the-money calls and puts with defined risk",
+        "win_rate": 78.5,
+        "avg_return": 12.3,
+        "max_loss": -8.5,
+        "complexity": "Intermediate",
+        "time_decay": "High",
+        "volatility_impact": "Negative",
+        "best_market": "Sideways",
+        "risk_reward": 1.45,
+        "capital_required": "Medium",
+        "examples": [
+          "SPY Iron Condor 30 days out",
+          "QQQ Iron Condor 45 days out"
+        ]
+      },
+      {
+        "name": "Butterfly Spread",
+        "description": "Limited risk, limited reward strategy with three strike prices",
+        "win_rate": 65.2,
+        "avg_return": 18.7,
+        "max_loss": -12.0,
+        "complexity": "Advanced",
+        "time_decay": "Medium",
+        "volatility_impact": "Negative",
+        "best_market": "Low volatility",
+        "risk_reward": 1.56,
+        "capital_required": "Low",
+        "examples": [
+          "AAPL Butterfly 60 days out",
+          "TSLA Butterfly 90 days out"
+        ]
+      },
+      {
+        "name": "Covered Call",
+        "description": "Selling calls against owned stock position",
+        "win_rate": 82.1,
+        "avg_return": 8.9,
+        "max_loss": "Unlimited (stock decline)",
+        "complexity": "Beginner",
+        "time_decay": "Positive",
+        "volatility_impact": "Positive",
+        "best_market": "Sideways to slightly up",
+        "risk_reward": 2.1,
+        "capital_required": "High (stock ownership)",
+        "examples": [
+          "MSFT Covered Call 30 days out",
+          "NVDA Covered Call 45 days out"
+        ]
+      }
+    ]
+  },
+  "forex_strategies": {
+    "strategies": [
+      {
+        "name": "Carry Trade",
+        "description": "Borrowing in low-yield currency, investing in high-yield currency",
+        "win_rate": 71.3,
+        "avg_return": 15.8,
+        "max_drawdown": -22.5,
+        "complexity": "Intermediate",
+        "interest_rate_sensitivity": "High",
+        "volatility_impact": "Negative",
+        "best_market": "Trending",
+        "risk_reward": 1.89,
+        "capital_required": "High",
+        "examples": [
+          "AUD/JPY carry trade",
+          "NZD/JPY carry trade"
+        ],
+        "currency_pairs": [
+          "AUD/JPY",
+          "NZD/JPY",
+          "GBP/JPY"
+        ]
+      },
+      {
+        "name": "Breakout Trading",
+        "description": "Entering positions when price breaks key support/resistance levels",
+        "win_rate": 58.7,
+        "avg_return": 24.3,
+        "max_drawdown": -18.9,
+        "complexity": "Beginner",
+        "interest_rate_sensitivity": "Low",
+        "volatility_impact": "Positive",
+        "best_market": "High volatility",
+        "risk_reward": 2.45,
+        "capital_required": "Medium",
+        "examples": [
+          "EUR/USD breakout",
+          "GBP/USD breakout"
+        ],
+        "currency_pairs": [
+          "EUR/USD",
+          "GBP/USD",
+          "USD/JPY"
+        ]
+      },
+      {
+        "name": "Mean Reversion",
+        "description": "Trading against extreme price movements expecting return to average",
+        "win_rate": 63.4,
+        "avg_return": 12.7,
+        "max_drawdown": -15.2,
+        "complexity": "Advanced",
+        "interest_rate_sensitivity": "Medium",
+        "volatility_impact": "Negative",
+        "best_market": "Ranging",
+        "risk_reward": 1.67,
+        "capital_required": "Medium",
+        "examples": [
+          "USD/CHF mean reversion",
+          "EUR/GBP mean reversion"
+        ],
+        "currency_pairs": [
+          "USD/CHF",
+          "EUR/GBP",
+          "AUD/USD"
+        ]
+      }
+    ]
+  },
+  "crypto_strategies": {
+    "strategies": [
+      {
+        "name": "Grid Trading",
+        "description": "Automated buying and selling at predetermined price levels",
+        "win_rate": 68.9,
+        "avg_return": 19.4,
+        "max_drawdown": -25.1,
+        "complexity": "Intermediate",
+        "volatility_impact": "Positive",
+        "trend_sensitivity": "Low",
+        "best_market": "Sideways",
+        "risk_reward": 1.78,
+        "capital_required": "High",
+        "examples": [
+          "BTC Grid Trading 5% intervals",
+          "ETH Grid Trading 3% intervals"
+        ],
+        "cryptocurrencies": [
+          "BTC",
+          "ETH",
+          "SOL"
+        ]
+      },
+      {
+        "name": "DCA (Dollar Cost Averaging)",
+        "description": "Regular purchases regardless of price to average cost basis",
+        "win_rate": 85.2,
+        "avg_return": 32.7,
+        "max_drawdown": -45.8,
+        "complexity": "Beginner",
+        "volatility_impact": "Positive",
+        "trend_sensitivity": "Low",
+        "best_market": "Any",
+        "risk_reward": 3.2,
+        "capital_required": "Low",
+        "examples": [
+          "Weekly BTC DCA",
+          "Monthly ETH DCA"
+        ],
+        "cryptocurrencies": [
+          "BTC",
+          "ETH",
+          "ADA",
+          "DOT"
+        ]
+      },
+      {
+        "name": "Momentum Trading",
+        "description": "Following strong price movements with trend-following indicators",
+        "win_rate": 54.3,
+        "avg_return": 28.9,
+        "max_drawdown": -35.2,
+        "complexity": "Intermediate",
+        "volatility_impact": "High",
+        "trend_sensitivity": "Very High",
+        "best_market": "Trending",
+        "risk_reward": 2.15,
+        "capital_required": "Medium",
+        "examples": [
+          "BTC Momentum with RSI",
+          "ETH Momentum with MACD"
+        ],
+        "cryptocurrencies": [
+          "BTC",
+          "ETH",
+          "SOL",
+          "AVAX"
+        ]
+      }
+    ]
+  },
+  "collected_at": "2025-08-15T09:29:32.088485",
+  "bots_used": [
+    "mixtral",
+    "claudia-trader",
+    "deepseek-coder"
+  ],
+  "data_source": "Multi-Bot Ollama Collection",
+  "pait_scoring_version": "2.0 - Dual Scoring System"
+}

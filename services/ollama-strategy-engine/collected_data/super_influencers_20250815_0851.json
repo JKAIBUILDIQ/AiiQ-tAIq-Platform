@@ -1,0 +1,220 @@
+{
+  "super_influencers": [
+    {
+      "portfolioHoldings": [
+        {
+          "symbol": "PLTR",
+          "weight": 8.5,
+          "value": "2.1B",
+          "change": "+2.3%"
+        },
+        {
+          "symbol": "TSLA",
+          "weight": 7.2,
+          "value": "1.8B",
+          "change": "+1.8%"
+        },
+        {
+          "symbol": "COIN",
+          "weight": 4.1,
+          "value": "980M",
+          "change": "-0.5%"
+        },
+        {
+          "symbol": "SQ",
+          "weight": 3.8,
+          "value": "920M",
+          "change": "+1.2%"
+        }
+      ],
+      "recentMoves": [
+        {
+          "action": "Increased PLTR position",
+          "date": "2025-01-15",
+          "impact": "positive"
+        },
+        {
+          "action": "Reduced TSLA exposure",
+          "date": "2025-01-12",
+          "impact": "neutral"
+        },
+        {
+          "action": "Added AI infrastructure stocks",
+          "date": "2025-01-10",
+          "impact": "positive"
+        }
+      ],
+      "publicStatements": [
+        {
+          "statement": "AI will be the biggest investment theme of the decade",
+          "date": "2025-01-14",
+          "sentiment": "bullish"
+        },
+        {
+          "statement": "Bitcoin reaching $1M by 2030",
+          "date": "2025-01-13",
+          "sentiment": "very_bullish"
+        },
+        {
+          "statement": "Disruptive innovation at discount prices",
+          "date": "2025-01-11",
+          "sentiment": "bullish"
+        }
+      ],
+      "cnbcAppearances": [
+        {
+          "show": "Squawk Box",
+          "date": "2025-01-15",
+          "key_points": [
+            "AI revolution",
+            "Bitcoin adoption",
+            "Innovation stocks"
+          ]
+        },
+        {
+          "show": "Mad Money",
+          "date": "2025-01-12",
+          "key_points": [
+            "Market opportunities",
+            "Tech valuations",
+            "Crypto outlook"
+          ]
+        }
+      ],
+      "raw_score": 160,
+      "max_raw_score": 1000,
+      "completeness_percentage": 30.8,
+      "normalized_rating": 45.4,
+      "max_normalized_rating": 500,
+      "rating_grade": "D (Insufficient Data)",
+      "breakdown": {
+        "performance": 0,
+        "social_acceleration": 17.0,
+        "strategy_quality": 0,
+        "proof_of_work": 3.5
+      },
+      "acceleration_factors": [
+        "CNBC appearances: 2 (2x multiplier)",
+        "Public statements: 3 (1.5x multiplier)"
+      ],
+      "recommendations": [
+        "Improve data completeness (currently 30.8%)",
+        "Collect missing performance metrics and strategy details",
+        "Focus on improving core performance metrics",
+        "Increase media exposure and public commentary",
+        "Build longer track record with proven results"
+      ],
+      "data_quality_assessment": "Poor - Insufficient data for reliable scoring",
+      "calculated_at": "2025-08-15T08:51:28.727450"
+    },
+    {
+      "portfolioHoldings": [
+        {
+          "symbol": "AAPL",
+          "weight": 42.8,
+          "value": "156.8B",
+          "change": "+1.1%"
+        },
+        {
+          "symbol": "BAC",
+          "weight": 8.9,
+          "value": "32.5B",
+          "change": "+0.8%"
+        },
+        {
+          "symbol": "KO",
+          "weight": 6.7,
+          "value": "24.6B",
+          "change": "+0.3%"
+        },
+        {
+          "symbol": "AXP",
+          "weight": 4.2,
+          "value": "15.4B",
+          "change": "+1.5%"
+        }
+      ],
+      "recentMoves": [
+        {
+          "action": "Increased AAPL position",
+          "date": "2025-01-15",
+          "impact": "positive"
+        },
+        {
+          "action": "Added Japanese trading houses",
+          "date": "2025-01-10",
+          "impact": "positive"
+        },
+        {
+          "action": "Reduced bank exposure",
+          "date": "2025-01-08",
+          "impact": "neutral"
+        }
+      ],
+      "publicStatements": [
+        {
+          "statement": "American business remains strong",
+          "date": "2025-01-14",
+          "sentiment": "bullish"
+        },
+        {
+          "statement": "Index funds for most investors",
+          "date": "2025-01-12",
+          "sentiment": "conservative"
+        },
+        {
+          "statement": "Buy when others are fearful",
+          "date": "2025-01-10",
+          "sentiment": "contrarian"
+        }
+      ],
+      "cnbcAppearances": [
+        {
+          "show": "Squawk Box",
+          "date": "2025-01-15",
+          "key_points": [
+            "Market outlook",
+            "Value opportunities",
+            "Economic strength"
+          ]
+        },
+        {
+          "show": "Closing Bell",
+          "date": "2025-01-12",
+          "key_points": [
+            "Investment philosophy",
+            "Market timing",
+            "Risk management"
+          ]
+        }
+      ],
+      "raw_score": 160,
+      "max_raw_score": 1000,
+      "completeness_percentage": 30.8,
+      "normalized_rating": 45.4,
+      "max_normalized_rating": 500,
+      "rating_grade": "D (Insufficient Data)",
+      "breakdown": {
+        "performance": 0,
+        "social_acceleration": 17.0,
+        "strategy_quality": 0,
+        "proof_of_work": 3.5
+      },
+      "acceleration_factors": [
+        "CNBC appearances: 2 (2x multiplier)",
+        "Public statements: 3 (1.5x multiplier)"
+      ],
+      "recommendations": [
+        "Improve data completeness (currently 30.8%)",
+        "Collect missing performance metrics and strategy details",
+        "Focus on improving core performance metrics",
+        "Increase media exposure and public commentary",
+        "Build longer track record with proven results"
+      ],
+      "data_quality_assessment": "Poor - Insufficient data for reliable scoring",
+      "calculated_at": "2025-08-15T08:51:28.727470"
+    }
+  ],
+  "collected_at": "2025-08-15T08:51:28.727473",
+  "collection_type": "scheduled_super_influencers"
+}

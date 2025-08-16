@@ -1,0 +1,76 @@
+{
+  "crypto_strategies": {
+    "strategies": [
+      {
+        "name": "Grid Trading",
+        "description": "Automated buying and selling at predetermined price levels",
+        "win_rate": 68.9,
+        "avg_return": 19.4,
+        "max_drawdown": -25.1,
+        "complexity": "Intermediate",
+        "volatility_impact": "Positive",
+        "trend_sensitivity": "Low",
+        "best_market": "Sideways",
+        "risk_reward": 1.78,
+        "capital_required": "High",
+        "examples": [
+          "BTC Grid Trading 5% intervals",
+          "ETH Grid Trading 3% intervals"
+        ],
+        "cryptocurrencies": [
+          "BTC",
+          "ETH",
+          "SOL"
+        ]
+      },
+      {
+        "name": "DCA (Dollar Cost Averaging)",
+        "description": "Regular purchases regardless of price to average cost basis",
+        "win_rate": 85.2,
+        "avg_return": 32.7,
+        "max_drawdown": -45.8,
+        "complexity": "Beginner",
+        "volatility_impact": "Positive",
+        "trend_sensitivity": "Low",
+        "best_market": "Any",
+        "risk_reward": 3.2,
+        "capital_required": "Low",
+        "examples": [
+          "Weekly BTC DCA",
+          "Monthly ETH DCA"
+        ],
+        "cryptocurrencies": [
+          "BTC",
+          "ETH",
+          "ADA",
+          "DOT"
+        ]
+      },
+      {
+        "name": "Momentum Trading",
+        "description": "Following strong price movements with trend-following indicators",
+        "win_rate": 54.3,
+        "avg_return": 28.9,
+        "max_drawdown": -35.2,
+        "complexity": "Intermediate",
+        "volatility_impact": "High",
+        "trend_sensitivity": "Very High",
+        "best_market": "Trending",
+        "risk_reward": 2.15,
+        "capital_required": "Medium",
+        "examples": [
+          "BTC Momentum with RSI",
+          "ETH Momentum with MACD"
+        ],
+        "cryptocurrencies": [
+          "BTC",
+          "ETH",
+          "SOL",
+          "AVAX"
+        ]
+      }
+    ]
+  },
+  "collected_at": "2025-08-15T08:57:10.991745",
+  "collection_type": "scheduled_crypto"
+}

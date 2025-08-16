@@ -8,3 +8,7 @@ dist/
 nodejs-portable/
 logs/
 *.log
+
+# Digital Covenant Protection
+MANIFESTO.md
+DIGITAL_VAULT/

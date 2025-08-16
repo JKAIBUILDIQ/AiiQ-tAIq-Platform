@@ -1,0 +1,17 @@
+{
+  "last_collection": {
+    "super_influencers": "2025-08-15T08:56:34.234042",
+    "options_strategies": "2025-08-15T08:56:41.083313",
+    "crypto_strategies": "2025-08-15T08:57:10.992320",
+    "full_refresh": "2025-08-15T08:57:10.992838",
+    "forex_strategies": "2025-08-15T08:54:13.396031"
+  },
+  "collection_counts": {
+    "super_influencers": 3,
+    "options_strategies": 3,
+    "crypto_strategies": 2,
+    "full_refresh": 3,
+    "forex_strategies": 1
+  },
+  "errors": []
+}

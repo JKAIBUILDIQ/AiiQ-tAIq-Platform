@@ -1,0 +1,49 @@
+{
+  "crypto_strategies": {
+    "strategies": [
+      {
+        "name": "Grid Trading",
+        "win_rate": 68.9,
+        "avg_return": 19.4,
+        "max_drawdown": -25.1,
+        "risk_reward": 1.78,
+        "capital_required": "High",
+        "cryptocurrencies": [
+          "BTC",
+          "ETH",
+          "SOL"
+        ]
+      },
+      {
+        "name": "DCA (Dollar Cost Averaging)",
+        "win_rate": 85.2,
+        "avg_return": 32.7,
+        "max_drawdown": -45.8,
+        "risk_reward": 3.2,
+        "capital_required": "Low",
+        "cryptocurrencies": [
+          "BTC",
+          "ETH",
+          "ADA",
+          "DOT"
+        ]
+      },
+      {
+        "name": "Momentum Trading",
+        "win_rate": 54.3,
+        "avg_return": 28.9,
+        "max_drawdown": -35.2,
+        "risk_reward": 2.15,
+        "capital_required": "Medium",
+        "cryptocurrencies": [
+          "BTC",
+          "ETH",
+          "SOL",
+          "AVAX"
+        ]
+      }
+    ]
+  },
+  "collected_at": "2025-08-15T08:52:17.585678",
+  "collection_type": "scheduled_crypto"
+}

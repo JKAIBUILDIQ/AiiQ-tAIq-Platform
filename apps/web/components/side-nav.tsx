@@ -185,8 +185,8 @@ function useServiceHealth(url: string) {
 }
 
 function ServiceStatusFooter() {
-  const orchOk = useServiceHealth('http://localhost:8080/health')
-  const stratOk = useServiceHealth('http://localhost:8788/health')
+  const orchOk = useServiceHealth('http://localhost:8001/health')
+  const stratOk = useServiceHealth('http://localhost:8787/health')
   const webOk = true
   
   // GPU Data Collection Status

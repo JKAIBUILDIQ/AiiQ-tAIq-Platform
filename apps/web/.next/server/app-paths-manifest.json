@@ -1,3 +1,6 @@
 {
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/api/bot-status/route": "app/api/bot-status/route.js",
+  "/pait-ratings/page": "app/pait-ratings/page.js",
+  "/gpu-data/page": "app/gpu-data/page.js"
 }

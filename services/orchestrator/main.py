@@ -93,6 +93,9 @@ manager = ConnectionManager()
 async def startup_event():
     """Initialize services on startup"""
     try:
+        # Set app start time for health checks
+        app.start_time = time.time()
+        
         # Allow disabling external Deribit connection in dev via env
         disable_deribit = os.getenv("DISABLE_DERIBIT", "0") in ("1", "true", "True")
         ensure_dirs()

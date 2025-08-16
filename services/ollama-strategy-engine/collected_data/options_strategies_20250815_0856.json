@@ -1,0 +1,59 @@
+{
+  "options_strategies": {
+    "strategies": [
+      {
+        "name": "Iron Condor",
+        "description": "Selling out-of-the-money calls and puts with defined risk",
+        "win_rate": 78.5,
+        "avg_return": 12.3,
+        "max_loss": -8.5,
+        "complexity": "Intermediate",
+        "time_decay": "High",
+        "volatility_impact": "Negative",
+        "best_market": "Sideways",
+        "risk_reward": 1.45,
+        "capital_required": "Medium",
+        "examples": [
+          "SPY Iron Condor 30 days out",
+          "QQQ Iron Condor 45 days out"
+        ]
+      },
+      {
+        "name": "Butterfly Spread",
+        "description": "Limited risk, limited reward strategy with three strike prices",
+        "win_rate": 65.2,
+        "avg_return": 18.7,
+        "max_loss": -12.0,
+        "complexity": "Advanced",
+        "time_decay": "Medium",
+        "volatility_impact": "Negative",
+        "best_market": "Low volatility",
+        "risk_reward": 1.56,
+        "capital_required": "Low",
+        "examples": [
+          "AAPL Butterfly 60 days out",
+          "TSLA Butterfly 90 days out"
+        ]
+      },
+      {
+        "name": "Covered Call",
+        "description": "Selling calls against owned stock position",
+        "win_rate": 82.1,
+        "avg_return": 8.9,
+        "max_loss": "Unlimited (stock decline)",
+        "complexity": "Beginner",
+        "time_decay": "Positive",
+        "volatility_impact": "Positive",
+        "best_market": "Sideways to slightly up",
+        "risk_reward": 2.1,
+        "capital_required": "High (stock ownership)",
+        "examples": [
+          "MSFT Covered Call 30 days out",
+          "NVDA Covered Call 45 days out"
+        ]
+      }
+    ]
+  },
+  "collected_at": "2025-08-15T08:56:41.082857",
+  "collection_type": "scheduled_options"
+}

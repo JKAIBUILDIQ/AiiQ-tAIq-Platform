@@ -11,76 +11,62 @@ const venvPython = fs.existsSync(path.resolve(venvPythonCandidate)) ? venvPython
 
 module.exports = {
   apps: [
-    // ───────────────────────────────
-    // 1) Next.js Web (Dashboard)
-    // ───────────────────────────────
     {
       name: 'aiiq-web',
-      cwd: 'apps/web',
-      script: 'node',
-      args: 'node_modules/next/dist/bin/next start -p 3000',
-      env: {
-        NODE_ENV: 'production',
-        PORT: '3000',
-      },
-      watch: false,
-      max_memory_restart: '512M',
-      autorestart: true,
-      time: true,
-    },
-
-    // ───────────────────────────────
-    // 2) Orchestrator API (FastAPI)
-    // ───────────────────────────────
-    {
-      name: 'orchestrator-api',
-      cwd: 'services/orchestrator',
-      script: venvPython,
-      args: '-m uvicorn main:app --host 0.0.0.0 --port 8080 --reload',
-      env: {
-        NODE_ENV: 'development',
-        PORT: '8080',
-      },
-      watch: false,
-      max_memory_restart: '512M',
-      autorestart: true,
-      time: true,
-    },
-
-    // ───────────────────────────────
-    // 3) Solana Adapter (Node/TS)
-    // ───────────────────────────────
-    {
-      name: 'solana-adapter',
-      cwd: 'services/solana-adapter',
-      script: 'pnpm',
+      script: 'npm',
       args: 'run dev',
+      cwd: './apps/web',
       env: {
         NODE_ENV: 'development',
-        PORT: '7070',
+        PORT: 3000
       },
-      watch: false,
-      max_memory_restart: '512M',
+      instances: 1,
       autorestart: true,
-      time: true,
+      watch: false,
+      max_memory_restart: '1G',
+      error_file: './logs/web-error.log',
+      out_file: './logs/web-out.log',
+      log_file: './logs/web-combined.log',
+      time: true
     },
-
-    // ───────────────────────────────
-    // 4) Ollama Strategy Engine (FastAPI)
-    // ───────────────────────────────
     {
-      name: 'strategy-engine',
-      cwd: 'services/ollama-strategy-engine',
-      script: venvPython,
-      args: '-m uvicorn main:app --host 0.0.0.0 --port 8787 --reload',
+      name: 'aiiq-orchestrator',
+      script: 'python',
+      args: '-m uvicorn services.orchestrator.main:app --host 0.0.0.0 --port 8000 --reload',
+      cwd: './',
       env: {
-        NODE_ENV: 'development',
-        PORT: '8787',
+        PYTHONPATH: './',
+        ALPHA_VANTAGE_API_KEY: '4U0QGD3MBDA5X4AK',
+        DERIBIT_VERIFY_SSL: '0',
+        DISABLE_DERIBIT: '0'
       },
-      watch: false,
-      max_memory_restart: '512M',
+      instances: 1,
       autorestart: true,
-      time: true,
+      watch: false,
+      max_memory_restart: '1G',
+      error_file: './logs/orchestrator-error.log',
+      out_file: './logs/orchestrator-out.log',
+      log_file: './logs/orchestrator-combined.log',
+      time: true
     },
-  ],
+    {
+      name: 'aiiq-strategy-engine',
+      script: 'python',
+      args: '-m uvicorn services.ollama-strategy-engine.main:app --host 0.0.0.0 --port 8787 --reload',
+      cwd: './',
+      env: {
+        PYTHONPATH: './',
+        OLLAMA_BASE_URL: 'http://localhost:11434',
+        OLLAMA_MODEL: 'llama3.1:8b'
+      },
+      instances: 1,
+      autorestart: true,
+      watch: false,
+      max_memory_restart: '1G',
+      error_file: './logs/strategy-engine-error.log',
+      out_file: './logs/strategy-engine-out.log',
+      log_file: './logs/strategy-engine-combined.log',
+      time: true
+    }
+  ]
 };

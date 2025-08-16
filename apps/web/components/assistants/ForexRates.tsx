@@ -151,3 +151,4 @@ export default function ForexRates({ base = 'USD' }: ForexRatesProps) {
   );
 }
 
+

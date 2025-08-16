@@ -1,0 +1,74 @@
+{
+  "forex_strategies": {
+    "strategies": [
+      {
+        "name": "Carry Trade",
+        "description": "Borrowing in low-yield currency, investing in high-yield currency",
+        "win_rate": 71.3,
+        "avg_return": 15.8,
+        "max_drawdown": -22.5,
+        "complexity": "Intermediate",
+        "interest_rate_sensitivity": "High",
+        "volatility_impact": "Negative",
+        "best_market": "Trending",
+        "risk_reward": 1.89,
+        "capital_required": "High",
+        "examples": [
+          "AUD/JPY carry trade",
+          "NZD/JPY carry trade"
+        ],
+        "currency_pairs": [
+          "AUD/JPY",
+          "NZD/JPY",
+          "GBP/JPY"
+        ]
+      },
+      {
+        "name": "Breakout Trading",
+        "description": "Entering positions when price breaks key support/resistance levels",
+        "win_rate": 58.7,
+        "avg_return": 24.3,
+        "max_drawdown": -18.9,
+        "complexity": "Beginner",
+        "interest_rate_sensitivity": "Low",
+        "volatility_impact": "Positive",
+        "best_market": "High volatility",
+        "risk_reward": 2.45,
+        "capital_required": "Medium",
+        "examples": [
+          "EUR/USD breakout",
+          "GBP/USD breakout"
+        ],
+        "currency_pairs": [
+          "EUR/USD",
+          "GBP/USD",
+          "USD/JPY"
+        ]
+      },
+      {
+        "name": "Mean Reversion",
+        "description": "Trading against extreme price movements expecting return to average",
+        "win_rate": 63.4,
+        "avg_return": 12.7,
+        "max_drawdown": -15.2,
+        "complexity": "Advanced",
+        "interest_rate_sensitivity": "Medium",
+        "volatility_impact": "Negative",
+        "best_market": "Ranging",
+        "risk_reward": 1.67,
+        "capital_required": "Medium",
+        "examples": [
+          "USD/CHF mean reversion",
+          "EUR/GBP mean reversion"
+        ],
+        "currency_pairs": [
+          "USD/CHF",
+          "EUR/GBP",
+          "AUD/USD"
+        ]
+      }
+    ]
+  },
+  "collected_at": "2025-08-15T08:54:13.395489",
+  "collection_type": "scheduled_forex"
+}
